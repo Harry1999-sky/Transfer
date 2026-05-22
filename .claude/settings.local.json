@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build *)",
+      "Bash(dotnet publish *)",
+      "Bash(awk '{print $5, $NF}')",
+      "Bash(timeout 5 ./LanTransfer.exe)",
+      "Bash(dotnet run *)",
+      "Bash(dotnet clean *)",
+      "Bash(mv IconGen /c/Users/贺睿/Desktop/)",
+      "Bash(rm -rf obj bin)",
+      "Bash(taskkill //F //IM LanTransfer.exe)",
+      "Bash(rm -rf publish)",
+      "Bash(timeout 3 ./LanTransfer.exe)",
+      "Bash(tasklist)",
+      "Bash(rm -f \"/c/Users/贺睿/Desktop/工作台/LanTransfer/publish/LanTransfer.exe\")",
+      "Bash(rm -f \"/c/Users/贺睿/Desktop/工作台/LanTransfer/publish/LanTransfer.pdb\")",
+      "Bash(rm -f \"/c/Users/贺睿/Desktop/工作台/LanTransfer/publish/LanTransfer.exe\" \"/c/Users/贺睿/Desktop/工作台/LanTransfer/publish/LanTransfer.pdb\")"
+    ]
+  }
+}
