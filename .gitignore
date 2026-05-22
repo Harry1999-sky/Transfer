@@ -1,0 +1,70 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# Package directories
+.nuget/
+packages/
+.packages/
+
+# MSBuild
+*.log
+*.tlog
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Local History for Visual Studio
+.localhistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# IDE specific files
+.DS_Store
+Thumbs.db
+
+# Publish directory
+publish/
+
+# NuGet packages lock file
+packages.lock.json
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Any other IDE
+.editorconfig
