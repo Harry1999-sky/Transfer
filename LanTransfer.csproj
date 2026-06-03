@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>LanTransfer</AssemblyName>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <!-- 发布配置：单文件绿色版 -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+  </PropertyGroup>
+
+  <!-- 从单文件 bundle 中排除不需要的程序集 -->
+  <Target Name="ExcludeUnusedAssemblies" AfterTargets="_ComputeFilesToBundle" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^System\.Windows\.Forms'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^System\.Data\.Common$'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^Microsoft\.DiaSymReader'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^System\.Private\.DataContractSerialization$'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^ReachFramework$'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^System\.Printing$'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^PresentationUI$'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^Microsoft\.VisualBasic'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^System\.DirectoryServices'))"/>
+      <_FilesToBundle Remove="@(_FilesToBundle)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Filename)', '^UIAutomationClientSideProviders$'))"/>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <Resource Include="Resources\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="QRCoder" Version="1.8.0" />
+  </ItemGroup>
+
+</Project>
