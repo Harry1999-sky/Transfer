@@ -164,6 +164,7 @@ public partial class MainWindow : Window
     {
         e.Cancel = true;
         Closing -= Window_Closing;
+        LanguageManager.IsShuttingDown = true;
         await ViewModel.ShutdownAsync();
         Close();
     }

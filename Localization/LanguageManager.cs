@@ -15,6 +15,8 @@ public static class LanguageManager
 
     public static string CurrentLanguage { get; private set; } = "zh-CN";
 
+    public static bool IsShuttingDown { get; set; }
+
     public static event Action? LanguageChanged;
 
     private static readonly Uri ZhUri = new("pack://application:,,,/Localization/Strings.zh-CN.xaml", UriKind.Absolute);
@@ -52,6 +54,7 @@ public static class LanguageManager
             Application.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
+                    if (IsShuttingDown) return;
                     try
                     {
                         LanguageChanged?.Invoke();
