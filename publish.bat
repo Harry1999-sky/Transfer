@@ -16,7 +16,7 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo [2/2] 清理多余文件...
+echo [2/2] 清理多余文件并重命名...
 cd publish
 for %%f in (*) do (
     if /i not "%%f"=="LanTransfer.exe" (
@@ -26,12 +26,13 @@ for %%f in (*) do (
 for /d %%d in (*) do (
     rd /s /q "%%d" >nul 2>&1
 )
+ren LanTransfer.exe LanTransfer_v1.2.0.exe
 cd ..
 
 echo.
 echo ========================================
 echo 打包完成！
-echo 输出: .\publish\LanTransfer.exe
+echo 输出: .\publish\LanTransfer_v1.2.0.exe
 echo ========================================
 echo.
 pause
